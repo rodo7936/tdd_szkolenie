@@ -30,7 +30,7 @@ def test_better_player1(p1, p2, result):
     (0, 2, 'Love-Thirty'),
     (0, 3, 'Love-Fourty'),
     (3, 5, 'Win for Player 2'),
-    (3, 4, 'Advantage Player 1'),]
+    (3, 4, 'Advantage Player 2'),]
                          )
 def test_better_player2(p1, p2, result):
     assert tenis_game(p1, p2) == result
