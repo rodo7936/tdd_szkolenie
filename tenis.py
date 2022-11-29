@@ -16,12 +16,12 @@ def tenis_game(a, b):
         is_remis = remis_map.get((a, b), 'Deuce')
     if is_remis:
         return is_remis
-    if a >= 4 and b <= a-2:
+    if a >= 4 and b <= a - 2:
         return 'Win for Player 1'
-    if b >= 4 and a <= b-2:
+    if b >= 4 and a <= b - 2:
         return 'Win for Player 2'
-    if b == a-1 and a>3:
+    if b == a - 1 and a > 3:
         return 'Advantage Player 1'
-    if a == b-1 and b>3:
+    if a == b - 1 and b > 3:
         return 'Advantage Player 2'
     return f"{points_map[a]}-{points_map[b]}"
