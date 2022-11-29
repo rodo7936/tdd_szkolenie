@@ -57,17 +57,17 @@ def test_avg(a, b):
 def test_avg_below(a, b, c):
     assert Calculator().avg(*a, lt=b) == c
 
+
 @pytest.mark.parametrize("a, b,c ", [([5, 5, 5, 10, 10, 10], 10, 10)])
 def test_avg_gt(a, b, c):
     assert Calculator().avg(*a, gt=b) == c
+
 
 @pytest.mark.parametrize("a, b,c ", [([5, 5, 5, 10, 10, 10], 0, 0)])
 def test_avg_gt_lt(a, b, c):
     assert Calculator().avg(*a, gt=b, lt=b) == c
 
+
 @pytest.mark.parametrize("a, c", [([], 0)])
 def test_empty_num_list(a, c):
     assert Calculator().avg(*a) == c
-
-
-
