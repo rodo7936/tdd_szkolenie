@@ -23,16 +23,51 @@ def test_minus_two_numbs(a, b, c):
 
 
 @pytest.mark.parametrize("a, b", [([1, 5], 5), ([69, 1], 69), ([1, 2], 2), ([2, 3], 6)])
-def test_multiplication_to_numbs(a, b):
+def test_multiplication_two_numbs(a, b):
+    assert Calculator().multiplication(*a) == b
+
+
+@pytest.mark.parametrize("a, b", [([0, 5], 0)])
+def test_multiplication_with_zero(a, b):
     with pytest.raises(ValueError):
-        assert Calculator().multiplication(*a) == b
+        Calculator().multiplication(*a)
 
 
-@pytest.mark.parametrize("a, b", [([1, 5, 1], 5), ([5, 5, 2], 50), ([1, 2, 10], 20), ([2, 0, -1], 6)])
+@pytest.mark.parametrize("a, b", [([1, 5, 1], 5), ([5, 5, 2], 50), ([1, 2, 10], 20)])
 def test_multiplication_multi_numbs(a, b):
-    with pytest.raises(ValueError):
-        assert Calculator().multiplication(*a) == b
+    assert Calculator().multiplication(*a) == b
 
+
+@pytest.mark.parametrize("a, b, c", [(1, 5, 0.2)])
+def test_division_two_numbs(a, b, c):
+    assert Calculator().division(a, b) == c
+
+
+@pytest.mark.parametrize("a, b, c", [(5, 0, float("inf"))])
+def test_division_two_numbs_with_zero(a, b, c):
+    assert Calculator().division(a, b) == c
+
+
+@pytest.mark.parametrize("a, b", [([5, 5, 5], 5)])
+def test_avg(a, b):
+    assert Calculator().avg(*a) == b
+
+
+@pytest.mark.parametrize("a, b,c ", [([5, 5, 5, 10, 500, 100], 5, 5)])
+def test_avg_below(a, b, c):
+    assert Calculator().avg(*a, lt=b) == c
+
+@pytest.mark.parametrize("a, b,c ", [([5, 5, 5, 10, 10, 10], 10, 10)])
+def test_avg_gt(a, b, c):
+    assert Calculator().avg(*a, gt=b) == c
+
+@pytest.mark.parametrize("a, b,c ", [([5, 5, 5, 10, 10, 10], 0, 0)])
+def test_avg_gt_lt(a, b, c):
+    assert Calculator().avg(*a, gt=b, lt=b) == c
+
+@pytest.mark.parametrize("a, c", [([], 0)])
+def test_empty_num_list(a, c):
+    assert Calculator().avg(*a) == c
 
 
 
